@@ -1,0 +1,11 @@
+<div class="container">
+  <ul class="list-group px-5 mx-auto" style="width: 500px">
+    <li class="pb-3 list-group-item">
+      {{title}}
+      <a (click)="onClick()" class="btn ms-5 ps-5"><small class="text-muted">{{state}}</small></a>
+        <div class="p-1" [hidden] = "stateControl()">
+          <ng-content></ng-content>
+        </div>
+    </li>
+  </ul>
+</div>  

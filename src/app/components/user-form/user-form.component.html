@@ -1,0 +1,34 @@
+<form ngForm #form="ngForm" (ngSubmit)="submit(form)">
+    
+    <div class="alert alert-danger" *ngIf="errors.length > 0">
+        <!-- <div *ngFor="let e of errors"> -->
+        <div *ngFor="let e of errors.slice().reverse()">
+            {{e.message}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input required minlength="4" maxlength="12" ngModel name="firstName" #firstName="ngModel"
+            (change)="logErrors(firstName)" (blur)="logErrors(firstName)" type="text" id="firstName" class="form-control">
+        
+    </div>
+
+    <div class="form-group">
+        <label  for="lastName">Last Name</label>
+        <input required minlength="4" maxlength="12" ngModel name="lastName" #lastName="ngModel" 
+         (change)="logErrors(lastName)" (blur)="logErrors(lastName)"  type="text" id="lastName" class="form-control">
+        
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input required min="18" max="100" ngModel name="age" #age="ngModel" 
+        (change)="logErrors(age)" (blur)="logErrors(age)" type="number" id="age" class="form-control">
+
+    </div>
+    <p>
+        {{form.value | json}}
+    </p>
+
+    <button class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+</form>
